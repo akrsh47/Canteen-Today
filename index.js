@@ -10,6 +10,11 @@ let amt_get_store;
 for(let j=0;j<amt_arr.length;j++){
   amt_arr[j]=0;
 }
+for(let j=0;j<item_arr.length;j++){
+  item_arr[j]=0;
+}
+
+
 
 
 const m1_doc = document.getElementById("1");
@@ -44,9 +49,10 @@ b1_doc.addEventListener("click",function(){
 
   if(in1_doc.value!=""){
 item_arr.splice(0,1,m1_doc.id);
-//amt_arr.push(in1_doc.value);
 amt_arr.splice(0,1,in1_doc.value);
 amtshow_doc1.innerHTML = amt_arr[0];
+//when we get input from input box when need to get it as number not string otherwise it gets concatenated!
+amt_arr[0] =parseInt(amt_arr[0]);
 addtostorage();
 
 in1_doc.value=""
@@ -64,6 +70,8 @@ b2_doc.addEventListener("click",function(){
 //amt_arr.push(in2_doc.value);
 amt_arr.splice(1,1,in2_doc.value);
 amtshow_doc2.innerHTML = amt_arr[1];
+amt_arr[1] =parseInt(amt_arr[1]);
+
 addtostorage()
 in2_doc.value=""
 
@@ -83,6 +91,8 @@ item_arr.splice(2,1,m3_doc.id);
 //amt_arr.push(in3_doc.value);
 amt_arr.splice(2,1,in3_doc.value);
 amtshow_doc3.innerHTML = amt_arr[2];
+amt_arr[2] =parseInt(amt_arr[2]);
+
 addtostorage()
 
 in3_doc.value=""
@@ -103,14 +113,16 @@ in3_doc.value=""
    // **** TESTING ****
 
    // INCREMENT BUTTON 
-   Incr(addb1_doc,amt_arr,amtshow_doc1,0);
-   Incr(addb2_doc,amt_arr,amtshow_doc2,1);
-   Incr(addb3_doc,amt_arr,amtshow_doc3,2);
+   Incr(addb1_doc,amt_arr,amtshow_doc1,0,m1_doc);
+   Incr(addb2_doc,amt_arr,amtshow_doc2,1,m2_doc);
+   Incr(addb3_doc,amt_arr,amtshow_doc3,2,m3_doc);
    
    // DECREMENT BUTTON 
-   Decr(subb1_doc,amt_arr,amtshow_doc1,0);
-   Decr(subb2_doc,amt_arr,amtshow_doc2,1);
-   Decr(subb3_doc,amt_arr,amtshow_doc3,2);
+   Decr(subb1_doc,amt_arr,amtshow_doc1,0,m1_doc);
+   Decr(subb2_doc,amt_arr,amtshow_doc2,1,m2_doc);
+   Decr(subb3_doc,amt_arr,amtshow_doc3,2,m3_doc);
+
+   
 
 function addtostorage(){
 amt_store_str = JSON.stringify(amt_arr);
@@ -120,26 +132,49 @@ amt_store_str = JSON.stringify(amt_arr);
 
   for(let i=0;i<item_arr.length;i++){
     if(amt_arr[i]==0){
-      upd_item_arr[i]=""
+      upd_item_arr[i]=0
     }
+    
   }
   id_store_str = JSON.stringify(upd_item_arr);
   localStorage.setItem("idval",id_store_str);
 }
 
-function Incr(doc,val,disp,i){
+function Incr(doc,val,disp,i,iddoc){
+
+
 doc.addEventListener("click",function(){
   val[i]+=1;
   disp.innerHTML=val[i];
+  addtostorage()
+  if(val[i]!=0){
+    item_arr.splice(i,1,iddoc.id)
+    upd_item_arr = item_arr.splice()
+  }
+  else{
+    item_arr.splice(i,1,0)
+    upd_item_arr = item_arr.splice()
+  }
 })
 }
 
-function Decr(doc,val,disp,i){
+function Decr(doc,val,disp,i,iddoc){
   doc.addEventListener("click",function(){
     val[i]-=1;
     disp.innerHTML=val[i];
+    addtostorage()
+    if(val[i]!=0){
+      item_arr.splice(i,1,iddoc.id)
+      upd_item_arr = item_arr.splice()
+    }
+    else{
+      item_arr.splice(i,1,0)
+      upd_item_arr = item_arr.splice()
+    }
   })
   }
+
+  
 
 // get element id
 //console.log(m1_doc.id);
