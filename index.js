@@ -6,7 +6,11 @@ let id_store_str;
 let id_get_store;
 let amt_get_store;
 
+const time = new Date();
 
+let day = time.getDate();
+let month = time.getMonth()+1;
+let year = time.getFullYear();
 
 /*setting the amount array to be empty number 0
 for(let j=0;j<amt_arr.length;j++){
@@ -17,7 +21,8 @@ for(let j=0;j<item_arr.length;j++){
 }
   */
 
-
+const date_doc = document.getElementById("date");
+  date_doc.innerHTML = `${day}/${month}/${year}`;
 
 
 const m1_doc = document.getElementById("1");
@@ -88,7 +93,7 @@ updateAdminVal();
   if(in1_doc.value!=""){
 item_arr.splice(0,1,m1_doc.id);
 amt_arr.splice(0,1,in1_doc.value);
-amtshow_doc1.innerHTML = amt_arr[0];
+amtshow_doc1.innerHTML = `Quantity: ${amt_arr[0]}`;
 //when we get input from input box when need to get it as number not string otherwise it gets concatenated!
 amt_arr[0] =parseInt(amt_arr[0]);
 addtostorage();
@@ -109,7 +114,7 @@ updateAdminVal();
 
 //amt_arr.push(in2_doc.value);
 amt_arr.splice(1,1,in2_doc.value);
-amtshow_doc2.innerHTML = amt_arr[1];
+amtshow_doc2.innerHTML = `Quantity:${amt_arr[1]}`;
 amt_arr[1] =parseInt(amt_arr[1]);
 
 addtostorage()
@@ -132,7 +137,7 @@ item_arr.splice(2,1,m3_doc.id);
     
 //amt_arr.push(in3_doc.value);
 amt_arr.splice(2,1,in3_doc.value);
-amtshow_doc3.innerHTML = amt_arr[2];
+amtshow_doc3.innerHTML = `Quantity:${amt_arr[2]}`;
 amt_arr[2] =parseInt(amt_arr[2]);
 
 addtostorage()
@@ -188,7 +193,7 @@ function Incr(doc,val,disp,i,iddoc){
 
 doc.addEventListener("click",function(){
   val[i]+=1;
-  disp.innerHTML=val[i];
+  disp.innerHTML=`Quantity:${val[i]}`;
   addtostorage()
   if(val[i]!=0){
     item_arr.splice(i,1,iddoc.id)
@@ -206,7 +211,7 @@ updateAdminVal();
 
   doc.addEventListener("click",function(){
     val[i]-=1;
-    disp.innerHTML=val[i];
+    disp.innerHTML=`Quantity:${val[i]}`;
     addtostorage()
     if(val[i]!=0){
       item_arr.splice(i,1,iddoc.id)
@@ -221,9 +226,9 @@ updateAdminVal();
   function updateAdminVal(){
 
     for(let i=0;i<get_amt_storage.length;i++){
-      amtshow_doc1.innerHTML = `${get_amt_storage[0]}`;
-      amtshow_doc2.innerHTML = `${get_amt_storage[1]}`;
-      amtshow_doc3.innerHTML = `${get_amt_storage[2]}`;
+      amtshow_doc1.innerHTML = `Quantity:${get_amt_storage[0]}`;
+      amtshow_doc2.innerHTML = `Quantity:${get_amt_storage[1]}`;
+      amtshow_doc3.innerHTML = `Quantity:${get_amt_storage[2]}`;
     
     }
     }

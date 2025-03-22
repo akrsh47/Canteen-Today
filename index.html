@@ -3,58 +3,70 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>
-      App_name
+      Canteen Today
     </title>
+    <link rel="stylesheet" href="index.css">
   </head>
 
   <body>
-    <div>
-      <div>
-        <p>App_name</p>
+    <div class="head1">
+      <div class="htsec">
+        <p class="h1">Canteen Today</p>
         <p>00:00:00</p>
-        <p>00/00/00</p>
+        <p id="date">00/00/00</p>
       </div>
-      <div><a href="user\index.html"><button>Admin</button></a></div>
+      <div class="chngeusrbtn"><a href="user\index.html"><button>Admin</button></a></div>
       
     </div>
-    <div>
-    <div id="1">
-      <p>Burger</p>
-      <img src="#">
-      <div>Availability: </div>
+    <div class="cardcontainsec">
+    <div id="1" class="card">
+      <p class="cardhead">Burger</p>
+      <img src="assets\1.png">
       
-      <div id="amt1">0</div>
+      
+      <div id="amt1">Quantity:0</div>
+      <div class="addsub">
       <button id="addb1">+</button>
       <button id="subb1">-</button>
+      </div>
       <br>
+      <div class="inpandbtn">
       <input type="number" id="i1">
-      <button id="b1">Confirm</button>
+      <button id="b1">Add</button>
+      </div>
       
     </div>
 
-    <div id="2">
-      <p>Sandwich</p>
-      <img src="#">
-      <div>Availability: </div>
-      <div id="amt2">0</div>
+    <div id="2" class="card">
+      <p class="cardhead">Sandwich</p>
+      <img src="assets\2.png">
+      
+      <div id="amt2">Quantity:0</div>
+      <div class="addsub">
       <button id="addb2">+</button>
       <button id="subb2">-</button>
+      </div>
       <br>
-
+<div class="inpandbtn">
       <input type="number" id="i2">
-      <button id="b2">Confirm</button>
+      <button id="b2">Add</button>
+      </div>
     </div>
 
-    <div id="3">
-      <p>Puffs</p>
-      <img src="#">
-      <div>Availability: </div>
-      <div id="amt3">0</div>
+    <div id="3" class="card">
+      <p class="cardhead">Samosa</p>
+      <img src="assets\3.png">
+      
+      <div id="amt3">Quantity:0</div>
+      <div class="addsub">
       <button id="addb3">+</button>
       <button id="subb3">-</button>
+      </div>
       <br>
+      <div class="inpandbtn">
       <input type="number" id="i3">
-      <button id="b3">Confirm</button>
+      <button id="b3">Add</button>
+      </div>
     </div>
 
   </div>

@@ -9,7 +9,7 @@ img:"#",
 amt:'0'
 },
 {
-title:"Puffs",
+title:"Samosa",
 img:"#",
 amt:'0'
 }
