@@ -1,18 +1,21 @@
-let item_arr=new Array(10);
+let item_arr=new Array(10).fill(0);
 let upd_item_arr = [];
-let amt_arr=new Array(10);
+let amt_arr=new Array(10).fill(0);
 let amt_store_str;
 let id_store_str;
 let id_get_store;
 let amt_get_store;
 
-// setting the amount array to be empty number 0
+
+
+/*setting the amount array to be empty number 0
 for(let j=0;j<amt_arr.length;j++){
   amt_arr[j]=0;
 }
 for(let j=0;j<item_arr.length;j++){
   item_arr[j]=0;
 }
+  */
 
 
 
@@ -43,10 +46,45 @@ const subb1_doc = document.getElementById("subb1");
 const subb2_doc = document.getElementById("subb2");
 const subb3_doc = document.getElementById("subb3");
 
+let temp_store1 = JSON.parse(localStorage.getItem("amtval"))
+
+if(temp_store1==0){
+localStorage.setItem("amtval",JSON.stringify([]))
+}
+let get_amt_storage= JSON.parse(localStorage.getItem("amtval"));
+
+
+//updateAdminVal();
+
+
+
+for(let i=0;i<get_amt_storage.length;i++){
+  amt_arr[i] = get_amt_storage[i];
+
+  
+}
+
+// CHANGE THIS (DRY)
+if(amt_arr[0]!=0){
+  item_arr.splice(0,1,m1_doc.id)
+}
+if(amt_arr[1]!=0){
+  item_arr.splice(1,1,m2_doc.id)
+}
+
+
+if(amt_arr[2]!=0){
+  item_arr.splice(2,1,m3_doc.id)
+}
+
+
+
+
+
 
 
 b1_doc.addEventListener("click",function(){
-
+updateAdminVal();
   if(in1_doc.value!=""){
 item_arr.splice(0,1,m1_doc.id);
 amt_arr.splice(0,1,in1_doc.value);
@@ -64,6 +102,8 @@ in1_doc.value=""
 })
 
 b2_doc.addEventListener("click",function(){
+updateAdminVal();
+
   if(in2_doc.value!=""){
     item_arr.splice(1,1,m2_doc.id);
 
@@ -85,6 +125,8 @@ in2_doc.value=""
   })
   
 b3_doc.addEventListener("click",function(){
+updateAdminVal();
+
   if(in3_doc.value!=""){
 item_arr.splice(2,1,m3_doc.id);
     
@@ -141,6 +183,7 @@ amt_store_str = JSON.stringify(amt_arr);
 }
 
 function Incr(doc,val,disp,i,iddoc){
+  updateAdminVal();
 
 
 doc.addEventListener("click",function(){
@@ -159,6 +202,8 @@ doc.addEventListener("click",function(){
 }
 
 function Decr(doc,val,disp,i,iddoc){
+updateAdminVal();
+
   doc.addEventListener("click",function(){
     val[i]-=1;
     disp.innerHTML=val[i];
@@ -173,6 +218,16 @@ function Decr(doc,val,disp,i,iddoc){
     }
   })
   }
+  function updateAdminVal(){
+
+    for(let i=0;i<get_amt_storage.length;i++){
+      amtshow_doc1.innerHTML = `${get_amt_storage[0]}`;
+      amtshow_doc2.innerHTML = `${get_amt_storage[1]}`;
+      amtshow_doc3.innerHTML = `${get_amt_storage[2]}`;
+    
+    }
+    }
+    
 
   
 
