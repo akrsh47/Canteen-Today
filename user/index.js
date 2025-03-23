@@ -28,6 +28,10 @@ const menu_doc = document.getElementById("menu");
 let get_id_storage = JSON.parse(localStorage.getItem("idval"));
 let get_amt_storage = JSON.parse(localStorage.getItem("amtval"));
 
+const usrmsg_doc = document.getElementById("usrmsg");
+let check=0;
+const main_doc = document.getElementById("main")
+
 function createCard(card_data,i){
   const card = document.createElement("div");
   const title = document.createElement("div");
@@ -58,3 +62,23 @@ for(let i=0;i<get_id_storage.length;i++){
   }
 }
 
+function checkEmpty(){
+  
+  for(let i=0;i<get_amt_storage.length;i++){
+    if(get_amt_storage[i]!=0){
+      check=1
+      break;
+    }
+  }
+
+  if(check==1){
+   usrmsg_doc.style.display="none" ;
+  }
+  else{
+    usrmsg_doc.style.display="block";
+    
+  }
+
+}
+
+checkEmpty();

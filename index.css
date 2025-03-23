@@ -112,9 +112,18 @@ width: 50%;
   width: 20%;
   font-size: 1rem;
   margin:0.5rem;
+  border-radius: 5rem;
+  
 
 }
 
+.addsub :first-child{
+  border: 1px solid #379249;
+}
+
+.addsub :last-child{
+  border: 1px solid #be5454;
+}
 .inpandbtn{
   display: flex;
   flex-direction: row;
@@ -122,11 +131,23 @@ width: 50%;
 
 .inpandbtn input{
   width: 40%;
+  border-radius: 2rem 0 0 2rem;
+  margin-right: 0.1rem;
+  padding: 0.3rem;
+  padding-left: 0.5rem;
+  border: 0;
+  background-color: rgb(253, 253, 253);
 }
 .inpandbtn button{
   width:60%;
   padding: 0.1rem;
   font-size: 0.9rem;
+  border-radius: 0 2rem 2rem 0;
+  margin-left: 0.1rem;
+  background-color: rgb(96, 166, 96);
+  color: white;
+  border: 0;
+
 }
 footer{
   position: fixed;
@@ -136,7 +157,7 @@ footer{
   width: 100%;
   background-color: var(--bghead);
   color: whitesmoke;
-  background: linear-gradient(to top,var(--gradbghead),var(--bghead) 70%);
+  background: linear-gradient(to top,var(--gradbghead),var(--bghead) );
 
 }
 .centeralign{
@@ -145,3 +166,14 @@ footer{
 }
 
 
+#usrmsg{
+  font-size: 2rem;
+  margin: auto;
+  text-align: center;
+  padding: 2rem;
+  color: rgb(163, 159, 159);
+  min-height: 100vh;
+  font-weight: 900;
+  
+  
+}
