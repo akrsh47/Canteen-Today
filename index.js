@@ -53,8 +53,9 @@ const subb3_doc = document.getElementById("subb3");
 
 let temp_store1 = JSON.parse(localStorage.getItem("amtval"))
 
-if(temp_store1==0){
+if(temp_store1==null){
 localStorage.setItem("amtval",JSON.stringify([]))
+//localStorage.setItem("amtval",JSON.stringify([]))
 }
 let get_amt_storage= JSON.parse(localStorage.getItem("amtval"));
 
