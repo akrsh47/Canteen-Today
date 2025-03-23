@@ -1,21 +1,28 @@
 card_data = [{
   title:"Burger",
-  img:"#",
+  img:'/assets/1.png',
   amt:'0'
 },
 {
 title:"Sandwich",
-img:"#",
+img:"/assets/2.png",
 amt:'0'
 },
 {
 title:"Samosa",
-img:"#",
+img:"/assets/3.png",
 amt:'0'
 }
 ]
 
 
+let time = new Date();
+let day = time.getDate();
+let month = time.getMonth()+1;
+let year  = time.getFullYear()
+const date_doc = document.getElementById("date");
+
+date_doc.innerHTML=`${day}/${month}/${year}`
 
 const menu_doc = document.getElementById("menu");
 let get_id_storage = JSON.parse(localStorage.getItem("idval"));
@@ -27,10 +34,14 @@ function createCard(card_data,i){
   const fimg = document.createElement("img");
   const amount = document.createElement("div");
 
+card.classList.add("card")
+title.classList.add("cardhead")
+amount.classList.add("centeralign")
+
   title.innerHTML = `${card_data[i].title}`;
-  fimg.src = `${card_data[i].img}`;
+  fimg.src = card_data[i].img;
   card_data[i].amt = get_amt_storage[i];
-  amount.innerHTML = `Available: ${card_data[i].amt}`;
+  amount.innerHTML = `Quantity: ${card_data[i].amt}`;
 
   card.appendChild(title);
   card.appendChild(fimg);

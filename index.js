@@ -104,6 +104,7 @@ in1_doc.value=""
   else{
     alert("Please enter a value")
   }
+  stayZero()
 })
 
 b2_doc.addEventListener("click",function(){
@@ -125,6 +126,7 @@ in2_doc.value=""
   else{
     alert("Please enter a value")
   }
+  stayZero()
 
 
   })
@@ -149,6 +151,7 @@ in3_doc.value=""
   else{
     alert("Please enter a value")
   }
+  stayZero()
 
 
     })
@@ -207,9 +210,11 @@ doc.addEventListener("click",function(){
 }
 
 function Decr(doc,val,disp,i,iddoc){
+  stayZero()
 updateAdminVal();
 
   doc.addEventListener("click",function(){
+    if(val[i]>0){
     val[i]-=1;
     disp.innerHTML=`Quantity:${val[i]}`;
     addtostorage()
@@ -221,6 +226,7 @@ updateAdminVal();
       item_arr.splice(i,1,0)
       upd_item_arr = item_arr.splice()
     }
+  }
   })
   }
   function updateAdminVal(){
@@ -231,6 +237,25 @@ updateAdminVal();
       amtshow_doc3.innerHTML = `Quantity:${get_amt_storage[2]}`;
     
     }
+    }
+    function stayZero(){
+      for(let i=0;i<amt_arr.length;i++){
+        if(amt_arr[i]<0){
+          amt_arr[i]=0
+          amtshow_doc1.innerHTML=`Quantity:${amt_arr[i]}`;
+          amtshow_doc2.innerHTML=`Quantity:${amt_arr[i]}`;
+          amtshow_doc3.innerHTML=`Quantity:${amt_arr[i]}`;
+
+          amt_store_str = JSON.stringify(amt_arr);
+  localStorage.setItem("amtval",amt_store_str);
+ get_amt_storage= JSON.parse(localStorage.getItem("amtval"));
+
+ item_arr.splice(i,1,0)
+      upd_item_arr = item_arr.splice()
+      addtostorage()
+
+        }
+      }
     }
     
 
